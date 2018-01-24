@@ -23,7 +23,7 @@ from bleu import *
 class Trainer(object):
     def __init__(self, train_loader, val_loader, vocabs, args):
 
-        # Language
+        # Language setting
         self.max_len = args.max_len
 
         # Data Loader
@@ -90,6 +90,7 @@ class Trainer(object):
 
     def train(self):
         self.best_bleu = .0
+        
         for epoch in range(self.num_epoch):
             self.scheduler.step()
             self.train_loss = AverageMeter()
@@ -100,9 +101,7 @@ class Trainer(object):
                 self.model.train()
 
                 src_input = batch.src[0]; src_length = batch.src[1]
-
                 trg_input = batch.trg[0][:,:-1]; trg_output=batch.trg[0][:,1:]; trg_length = batch.trg[1]
-
                 batch_size, trg_len = trg_input.size(0), trg_input.size(1)
 
                 decoder_logit = self.model(src_input, src_length.tolist(), trg_input)
@@ -141,7 +140,6 @@ class Trainer(object):
                         'train_loss': self.train_loss.avg,
                         'train_bleu': self.train_bleu.avg               
                         }
-
                     for tag, value in info.items():
                         self.tf_log.scalar_summary(tag, value, (epoch * self.iter_per_epoch)+i+1)
 
@@ -154,8 +152,8 @@ class Trainer(object):
         self.model.eval()
         val_bleu = AverageMeter()
         start_time = time.time()
+        
         for i, batch in enumerate(tqdm(self.val_loader)):
-
             src_input = batch.src[0]; src_length = batch.src[1]
             trg_input = batch.trg[0][:,:-1]; trg_output=batch.trg[0][:,1:]; trg_length = batch.trg[1]
             batch_size, trg_len = trg_input.size(0), trg_input.size(1)
@@ -171,14 +169,13 @@ class Trainer(object):
                 trg_sent = self.get_sentence(tensor2np(trg_output[j]), 'trg')
                 pred_sents.append(pred_sent)
                 trg_sents.append(trg_sent)
-
             bleu_value = get_bleu(pred_sents, trg_sents)
             val_bleu.update(bleu_value, 1)
                
         self.print_valid_result(epoch, train_iter, val_bleu.avg, start_time)       
         self.print_sample(batch_size, epoch, train_iter, src_input, trg_output, pred)
 
-        # save model if bleu score is bigger than the best 
+        # Save model if bleu score is higher than the best 
         if self.best_bleu < val_bleu.avg:
             self.best_bleu = val_bleu.avg        
             checkpoint = {
