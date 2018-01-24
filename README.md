@@ -35,6 +35,6 @@ so that you don't need to preprocess the data again. Then it trains and test
 
 ### (Optional) Tensorboard visualization 
 ```bash
-$ tensorboard --logdir='./logs/' --
+$ tensorboard --logdir='./logs/' --port=8888
 ```
 For the tensorboard visualization, open the new terminal and run the command below and open `http://localhost:8888` on your web browser.
