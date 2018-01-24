@@ -1,6 +1,6 @@
 # Pytorch-Torchtext-Seq2Seq
-This is a [Pytorch](https://github.com/pytorch/pytorch)
-implementation of [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+[Pytorch](https://github.com/pytorch/pytorch)
+implementation of [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473).
 
 
 ### Prerequisites
