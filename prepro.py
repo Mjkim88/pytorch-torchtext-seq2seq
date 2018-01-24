@@ -12,22 +12,12 @@ PAD_WORD = '<PAD>'
     
 
 class MaxlenTranslationDataset(data.Dataset):
-    """Defines a dataset for machine translation."""
-
 	# Code modified from 
 	# https://github.com/pytorch/text/blob/master/torchtext/datasets/translation.py
 	# to be able to control the max length of the source and target sentences
 
     def __init__(self, path, exts, fields, max_len=None, **kwargs):
-        """Create a TranslationDataset given paths and fields.
-        Arguments:
-            path: Common prefix of paths to the data files for both languages.
-            exts: A tuple containing the extension to path for each language.
-            fields: A tuple containing the fields that will be used for data
-                in each language.
-            Remaining keyword arguments: Passed to the constructor of
-                data.Dataset.
-        """
+	
         if not isinstance(fields[0], (tuple, list)):
             fields = [('src', fields[0]), ('trg', fields[1])]
 
@@ -67,7 +57,8 @@ class DataPreprocessor(object):
 
 		src_vocab, trg_vocab, src_inv_vocab, trg_inv_vocab = self.generate_vocabs()
 
-		vocabs = {'src_vocab': src_vocab, 'trg_vocab':trg_vocab, 'src_inv_vocab':src_inv_vocab, 'trg_inv_vocab':trg_inv_vocab}
+		vocabs = {'src_vocab': src_vocab, 'trg_vocab':trg_vocab, 
+			  'src_inv_vocab':src_inv_vocab, 'trg_inv_vocab':trg_inv_vocab}
 
 		return train_dataset, val_dataset, vocabs
 
@@ -90,7 +81,8 @@ class DataPreprocessor(object):
 		self.trg_field.build_vocab(train_dataset, max_size=30000)
 
 		src_vocab, trg_vocab, src_inv_vocab, trg_inv_vocab = self.generate_vocabs()
-		vocabs = {'src_vocab': src_vocab, 'trg_vocab':trg_vocab, 'src_inv_vocab':src_inv_vocab, 'trg_inv_vocab':trg_inv_vocab}
+		vocabs = {'src_vocab': src_vocab, 'trg_vocab':trg_vocab, 
+			  'src_inv_vocab':src_inv_vocab, 'trg_inv_vocab':trg_inv_vocab}
 		
 		return train_dataset, val_dataset, vocabs	
 
