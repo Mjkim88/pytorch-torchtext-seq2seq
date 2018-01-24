@@ -6,9 +6,9 @@ implementation of [Neural Machine Translation by Jointly Learning to Align and T
 ## Prerequisites
 * [Python 3.5+](https://www.continuum.io/downloads)
 * [PyTorch 0.2.0](http://pytorch.org/)
-* [TensorFlow 1.3+](https://www.tensorflow.org/) (optional for tensorboard)
 * [Torchtext 0.2.1](https://github.com/pytorch/text)
 * [spaCy 2.0.5](https://spacy.io/)
+* [TensorFlow 1.3+](https://www.tensorflow.org/) (optional for tensorboard)
 
 
 ## Getting Started
