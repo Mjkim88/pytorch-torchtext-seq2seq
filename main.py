@@ -12,7 +12,8 @@ def main(args):
 	cudnn.benchmark = True
 
 	# Load dataset
-	data_file = os.path.join(args.data_path, "data_{}_{}_{}_{}.json".format(args.dataset, args.src_lang, args.trg_lang, args.max_len))
+	data_file = os.path.join(args.data_path, "data_{}_{}_{}_{}.json".format(args.dataset, args.src_lang, 
+										args.trg_lang, args.max_len))
 
 	start_time = time.time()
 	if os.path.isfile(data_file):
@@ -22,7 +23,8 @@ def main(args):
 	else:	
 		print ("Preprocessing data..")		
 		dp = DataPreprocessor()
-		train_dataset, val_dataset, vocabs = dp.preprocess(args.train_path, args.val_path, args.src_lang, args.trg_lang, args.max_len)
+		train_dataset, val_dataset, vocabs = dp.preprocess(args.train_path, args.val_path, 
+								   args.src_lang, args.trg_lang, args.max_len)
 		print ("Saving data..")	
 		dp.save_data(data_file, train_dataset, val_dataset)
 	print ("Elapsed Time: %1.3f \n"  %(time.time() - start_time))
