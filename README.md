@@ -31,7 +31,7 @@ $ python main.py --dataset 'europarl_news' --src_lang 'de' --trg_lang 'en' --dat
                  --train_path './data/training/europarl-v7.de-en' --val_path './data/training/news-commentary-v9.de-en' \
                  --log log --sample sample
 ```
-If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the preprocessed JSON file to `\data`, so that it avoids preprocessing the same datasets again. 
+If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the preprocessed JSON file to `/data`, so that it avoids preprocessing the same datasets again. 
 
 #### (Optional) Tensorboard visualization 
 ```bash
