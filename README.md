@@ -22,7 +22,7 @@ $ cd Pytorch-Torchtext-Seq2Seq
 ```bash
 $ bash download.sh
 ```
-This commands will download Europarl v7(for training) and News Commentary(for validation) datasets to `data/` folder. 
+This commands will download Europarl v7 and News Commentary datasets to `data/` folder. 
 If you want to use other datasets, you don't need to run this command. 
 
 #### 3. Train the model 
