@@ -26,7 +26,7 @@ def main(args):
 		dp = DataPreprocessor()
 		train_dataset, val_dataset, vocabs = dp.preprocess(args.train_path, args.val_path, 
 								   args.src_lang, args.trg_lang, args.max_len)
-		print ("Saving data..")	
+		
 		
 	print ("Elapsed Time: %1.3f \n"  %(time.time() - start_time))
 
