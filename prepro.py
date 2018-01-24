@@ -131,10 +131,10 @@ class DataPreprocessor(object):
 
 
 	def generate_vocabs(self):
-
+	    # Define string to index vocabs
 	    src_vocab = self.src_field.vocab.stoi
 	    trg_vocab = self.trg_field.vocab.stoi
-
+	    # Define index to string vocabs
 	    src_inv_vocab = self.src_field.vocab.itos
 	    trg_inv_vocab = self.trg_field.vocab.itos
 
