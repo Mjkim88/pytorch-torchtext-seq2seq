@@ -1,7 +1,5 @@
 import random
 
-
-
 def tensor2np(tensor):
     return tensor.data.cpu().numpy()
 
