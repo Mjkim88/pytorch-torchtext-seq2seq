@@ -5,6 +5,7 @@ import time
 import re
 import spacy
 import os 
+from tqdm import tqdm
 
 SOS_WORD = '<SOS>'
 EOS_WORD = '<EOS>'
@@ -25,7 +26,7 @@ class MaxlenTranslationDataset(data.Dataset):
 
         examples = []
         with open(src_path) as src_file, open(trg_path) as trg_file:
-            for src_line, trg_line in zip(src_file, trg_file):
+            for src_line, trg_line in tqdm(zip(src_file, trg_file)):
                 src_line, trg_line = src_line.split(' '), trg_line.split(' ')
                 if max_len is not None:
                 	src_line = src_line[:max_len]
@@ -46,7 +47,10 @@ class DataPreprocessor(object):
 
 	def preprocess(self, train_path, val_path, src_lang, trg_lang, max_len=None):
 		# Generating torchtext dataset class
+		print ("Preprocessing train dataset...")
 		train_dataset = self.generate_data(train_path, src_lang, trg_lang, max_len)
+		
+		print ("Preprocessing validation dataset...")
 		val_dataset = self.generate_data(val_path, src_lang, trg_lang, max_len)
 
 		# Building field vocabulary
