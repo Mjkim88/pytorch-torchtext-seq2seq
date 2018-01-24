@@ -3,7 +3,7 @@ This is a [Pytorch](https://github.com/pytorch/pytorch)
 implementation of [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
 
 
-## Prerequisites
+### Prerequisites
 * [Python 3.5+](https://www.continuum.io/downloads)
 * [PyTorch 0.2.0](http://pytorch.org/)
 * [Torchtext 0.2.1](https://github.com/pytorch/text)
@@ -12,20 +12,20 @@ implementation of [Neural Machine Translation by Jointly Learning to Align and T
 
 
 ## Getting Started
-### 1. Clone the repository
+#### 1. Clone the repository
 ```bash
 $ git clone https://github.com/Mjkim88/Pytorch-Torchtext-Seq2Seq.git
 $ cd Pytorch-Torchtext-Seq2Seq
 ```
 
-### 2. Download the dataset
+#### 2. Download the dataset
 ```bash
 $ bash download.sh
 ```
 This commands will download Europarl v7(for training) and News Commentary(for validation) datasets to `data/` folder. 
 If you want to use other datasets, you don't need to run this command. 
 
-### 3. Train the model 
+#### 3. Train the model 
 ```bash
 $ python main.py --dataset 'europarl_news' --src_lang 'de' --trg_lang 'en' --data_path './data' \
                  --train_path './data/europarl/europarl-v7.de-en' --val_path './data/news/news-commentary-v9.de-en' \
@@ -33,7 +33,7 @@ $ python main.py --dataset 'europarl_news' --src_lang 'de' --trg_lang 'en' --dat
 ```
 If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the preprocessed JSON file to `\data`, so that it avoids preprocessing the same datasets again. 
 
-### (Optional) Tensorboard visualization 
+#### (Optional) Tensorboard visualization 
 ```bash
 $ tensorboard --logdir='./logs/' --port=8888
 ```
