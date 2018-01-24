@@ -3,6 +3,7 @@ from torch import cuda
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
+from torch.optim.lr_scheduler import *
 
 import numpy as np
 import math
