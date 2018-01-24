@@ -49,10 +49,14 @@ class DataPreprocessor(object):
 		# Generating torchtext dataset class
 		print ("Preprocessing train dataset...")
 		train_dataset = self.generate_data(train_path, src_lang, trg_lang, max_len)
+
+		print ("Saving train dataset...")
 		self.save_data(train_file, train_dataset)
 
 		print ("Preprocessing validation dataset...")
 		val_dataset = self.generate_data(val_path, src_lang, trg_lang, max_len)
+		
+		print ("Saving validation dataset...")
 		self.save_data(val_file, val_dataset)
 
 		# Building field vocabulary
