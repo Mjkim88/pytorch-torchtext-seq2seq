@@ -22,7 +22,8 @@ $ cd Pytorch-Torchtext-Seq2Seq
 ```bash
 $ bash download.sh
 ```
-This commands will download Europarl v7(for training) and News Commentary(for validation) datasets to `data/` folder. If you want to train and test other datasets, you don't need to run this command. 
+This commands will download Europarl v7(for training) and News Commentary(for validation) datasets to `data/` folder. 
+If you want to use other datasets, you don't need to run this command. 
 
 ### 3. Train the model 
 ```bash
@@ -30,8 +31,7 @@ $ python main.py --dataset 'europarl_news' --src_lang 'de' --trg_lang 'en' --dat
                  --train_path './data/europarl/europarl-v7.de-en' --val_path './data/news/news-commentary-v9.de-en' \
                  --log log --sample sample
 ```
-If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the results, 
-so that you don't need to preprocess the data again. Then it trains and test 
+If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the preprocessed JSON file to '\data', so that it avoids preprocessing the same datasets again. 
 
 ### (Optional) Tensorboard visualization 
 ```bash
