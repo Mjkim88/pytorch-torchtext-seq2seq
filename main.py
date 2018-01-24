@@ -14,17 +14,17 @@ def main(args):
 	# Load dataset
 	train_file = os.path.join(args.data_path, "data_{}_{}_{}_{}.json".format(args.dataset, args.src_lang, 
 										args.trg_lang, args.max_len))
-	dev_file = os.path.join(args.data_path, "data_dev_{}_{}_{}.json".format(args.src_lang, args.trg_lang, args.max_len))
+	val_file = os.path.join(args.data_path, "data_dev_{}_{}_{}.json".format(args.src_lang, args.trg_lang, args.max_len))
 
 	start_time = time.time() 
 	if os.path.isfile(train_file) and os.path.isfile(val_file):
 		print ("Loading data..")
 		dp = DataPreprocessor()
-		train_dataset, val_dataset, vocabs = dp.load_data(train_file, dev_file)
+		train_dataset, val_dataset, vocabs = dp.load_data(train_file, val_file)
 	else:	
 		print ("Preprocessing data..")		   
 		dp = DataPreprocessor()
-		train_dataset, val_dataset, vocabs = dp.preprocess(args.train_path, args.val_path, 
+		train_dataset, val_dataset, vocabs = dp.preprocess(args.train_path, args.val_path, train_file, val_file,
 								   args.src_lang, args.trg_lang, args.max_len)
 		
 		

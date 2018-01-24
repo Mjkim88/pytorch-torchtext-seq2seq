@@ -45,7 +45,7 @@ class DataPreprocessor(object):
 	def __init__(self):
 		self.src_field, self.trg_field = self.generate_fields()
 
-	def preprocess(self, train_path, val_path, src_lang, trg_lang, max_len=None):
+	def preprocess(self, train_path, val_path, train_file, val_file, src_lang, trg_lang, max_len=None):
 		# Generating torchtext dataset class
 		print ("Preprocessing train dataset...")
 		train_dataset = self.generate_data(train_path, src_lang, trg_lang, max_len)
@@ -55,7 +55,7 @@ class DataPreprocessor(object):
 
 		print ("Preprocessing validation dataset...")
 		val_dataset = self.generate_data(val_path, src_lang, trg_lang, max_len)
-		
+
 		print ("Saving validation dataset...")
 		self.save_data(val_file, val_dataset)
 
@@ -70,7 +70,7 @@ class DataPreprocessor(object):
 
 		return train_dataset, val_dataset, vocabs
 
-	def load_data(self, train_file, dev_file):
+	def load_data(self, train_file, val_file):
 
 		# Loading saved data
 		train_dataset = torch.load(train_file)
