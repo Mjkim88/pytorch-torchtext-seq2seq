@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 
 	# Language setting
-	parser.add_argument('--dataset', type=str, default='europarl_news')
+	parser.add_argument('--dataset', type=str, default='europarl')
 	parser.add_argument('--src_lang', type=str, default='de')
 	parser.add_argument('--trg_lang', type=str, default='en')
 	parser.add_argument('--max_len', type=int, default=50)
@@ -68,8 +68,8 @@ if __name__ == '__main__':
 
 	# Path
 	parser.add_argument('--data_path', type=str, default='./data/')
-	parser.add_argument('--train_path', type=str, default='./data/europarl/europarl-v7.de-en')
-	parser.add_argument('--val_path', type=str, default='./data/news/news-commentary-v9.de-en')
+	parser.add_argument('--train_path', type=str, default='./data/training/europarl-v7.de-en')
+	parser.add_argument('--val_path', type=str, default='./data/dev/newstest2013')
 
 	# Dir. 
 	parser.add_argument('--log', type=str, default='log')
