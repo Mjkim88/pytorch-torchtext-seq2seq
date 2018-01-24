@@ -20,7 +20,6 @@ class Attention(nn.Module):
         enc_h  : B x S x 2*H 
         prev_s : B x 1 x H 
         '''
-
         seq_len = enc_h.size(1) 
 
         enc_h_in = self.enc_h_in(enc_h) # B x S x H
@@ -30,7 +29,6 @@ class Attention(nn.Module):
         h = self.linear(h)  # B x S x 1
 
         alpha = F.softmax(h)
-
         ctx = torch.bmm(alpha.transpose(2,1), enc_h).squeeze(1) # B x 1 x 2*H
 
         return ctx  
