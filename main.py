@@ -17,7 +17,7 @@ def main(args):
 	dev_file = os.path.join(args.data_path, "data_dev_{}_{}_{}.json".format(args.src_lang, args.trg_lang, args.max_len))
 
 	start_time = time.time() 
-	if os.path.isfile(train_file, dev_file):
+	if os.path.isfile(train_file) and os.path.isfile(val_file):
 		print ("Loading data..")
 		dp = DataPreprocessor()
 		train_dataset, val_dataset, vocabs = dp.load_data(train_file, dev_file)
