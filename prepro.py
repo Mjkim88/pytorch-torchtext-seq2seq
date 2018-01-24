@@ -49,9 +49,11 @@ class DataPreprocessor(object):
 		# Generating torchtext dataset class
 		print ("Preprocessing train dataset...")
 		train_dataset = self.generate_data(train_path, src_lang, trg_lang, max_len)
-		
+		self.save_data(train_file, train_dataset)
+
 		print ("Preprocessing validation dataset...")
 		val_dataset = self.generate_data(val_path, src_lang, trg_lang, max_len)
+		self.save_data(val_file, val_dataset)
 
 		# Building field vocabulary
 		self.src_field.build_vocab(train_dataset, max_size=30000)
@@ -64,12 +66,14 @@ class DataPreprocessor(object):
 
 		return train_dataset, val_dataset, vocabs
 
-	def load_data(self, data_file):
+	def load_data(self, train_file, dev_file):
 
 		# Loading saved data
-		dataset = torch.load(data_file)
-		train_examples = dataset['train_examples']
-		val_examples = dataset['val_examples']
+		train_dataset = torch.load(train_file)
+		train_examples = train_dataset['examples']
+
+		val_dataset = torch.load(val_file)
+		val_examples = val_dataset['examples']
 
 		# Generating torchtext dataset class
 		fields = [('src', self.src_field), ('trg', self.trg_field)]
@@ -87,15 +91,11 @@ class DataPreprocessor(object):
 		return train_dataset, val_dataset, vocabs	
 
 
-	def save_data(self, data_file, train_dataset, val_dataset):
+	def save_data(self, data_file, dataset):
 
-		train_examples = vars(train_dataset)['examples']
-		train_fields = vars(train_dataset)['fields']
-		val_examples = vars(val_dataset)['examples']
-		val_fields = vars(val_dataset)['fields']		
+		examples = vars(dataset)['examples']
+		dataset = {'examples': examples}
 
-		dataset = {'train_examples': train_examples, 'val_examples': val_examples}
-		
 		torch.save(dataset, data_file)
 
 	def generate_fields(self):     
