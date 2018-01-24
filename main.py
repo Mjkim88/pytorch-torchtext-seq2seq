@@ -64,7 +64,7 @@ if __name__ == '__main__':
 	parser.add_argument('--hidden_dim', type=int, default=1024)
 
 	# Training setting
-	parser.add_argument('--batch_size', type=int, default=30)
+	parser.add_argument('--batch_size', type=int, default=40)
 	parser.add_argument('--num_epoch', type=int, default=100)	
 
 	# Path
