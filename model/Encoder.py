@@ -21,7 +21,6 @@ class Encoder(nn.Module):
         source: B x T 
         '''
         batch_size = source.size(0)
-
         src_embed = self.embedding(source)
         
         if hidden is None:
