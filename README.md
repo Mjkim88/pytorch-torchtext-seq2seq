@@ -28,7 +28,7 @@ If you want to use other datasets, you don't need to run this command.
 #### 3. Train the model 
 ```bash
 $ python main.py --dataset 'europarl_news' --src_lang 'de' --trg_lang 'en' --data_path './data' \
-                 --train_path './data/europarl/europarl-v7.de-en' --val_path './data/news/news-commentary-v9.de-en' \
+                 --train_path './data/training/europarl-v7.de-en' --val_path './data/training/news-commentary-v9.de-en' \
                  --log log --sample sample
 ```
 If you initially run the above command, the model starts from preprocessing data using Torchtext and automatically saves the preprocessed JSON file to `\data`, so that it avoids preprocessing the same datasets again. 
