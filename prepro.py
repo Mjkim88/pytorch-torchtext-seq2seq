@@ -39,14 +39,12 @@ class MaxlenTranslationDataset(data.Dataset):
 
         super(MaxlenTranslationDataset, self).__init__(examples, fields, **kwargs)
 
-
-
+	
 class DataPreprocessor(object):
 	def __init__(self):
 		self.src_field, self.trg_field = self.generate_fields()
 
 	def preprocess(self, train_path, val_path, src_lang, trg_lang, max_len=None):
-
 		# Generating torchtext dataset class
 		train_dataset = self.generate_data(train_path, src_lang, trg_lang, max_len)
 		val_dataset = self.generate_data(val_path, src_lang, trg_lang, max_len)
@@ -61,8 +59,6 @@ class DataPreprocessor(object):
 			  'src_inv_vocab':src_inv_vocab, 'trg_inv_vocab':trg_inv_vocab}
 
 		return train_dataset, val_dataset, vocabs
-
-
 
 	def load_data(self, data_file):
 
@@ -87,7 +83,6 @@ class DataPreprocessor(object):
 		return train_dataset, val_dataset, vocabs	
 
 
-
 	def save_data(self, data_file, train_dataset, val_dataset):
 
 		train_examples = vars(train_dataset)['examples']
@@ -98,7 +93,6 @@ class DataPreprocessor(object):
 		dataset = {'train_examples': train_examples, 'val_examples': val_examples}
 		
 		torch.save(dataset, data_file)
-
 
 	def generate_fields(self):     
 	    src_field = data.Field(tokenize=data.get_tokenizer('spacy'), 
@@ -117,7 +111,6 @@ class DataPreprocessor(object):
 
 	    return src_field, trg_field
 
-
 	def generate_data(self, data_path, src_lang, trg_lang, max_len=None):
 	    exts = ('.'+src_lang, '.'+trg_lang)
 
@@ -128,7 +121,6 @@ class DataPreprocessor(object):
 	        max_len=max_len)    
 
 	    return dataset
-
 
 	def generate_vocabs(self):
 	    # Define string to index vocabs
