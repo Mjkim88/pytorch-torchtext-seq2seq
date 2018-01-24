@@ -6,6 +6,8 @@ wget http://statmt.org/wmt13/training-parallel-europarl-v7.tgz
 tar -xzvf training-parallel-europarl-v7.tgz
 rm training-parallel-europarl-v7.tgz
 
-wge http://statmt.org/wmt14/training-parallel-nc-v9.tgz
+wget http://statmt.org/wmt14/training-parallel-nc-v9.tgz
 tar -xzvf training-parallel-europarl-v7.tgz
 rm training-parallel-europarl-v7.tgz
+
+cd ..
