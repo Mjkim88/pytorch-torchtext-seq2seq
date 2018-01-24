@@ -35,6 +35,6 @@ If you initially run the above command, the model starts from preprocessing data
 
 #### (Optional) Tensorboard visualization 
 ```bash
-$ tensorboard --logdir='./logs/' --port=8888
+$ tensorboard --logdir='./logs' --port=8888
 ```
 For the tensorboard visualization, open the new terminal and run the command below and open `http://localhost:8888` on your web browser.
