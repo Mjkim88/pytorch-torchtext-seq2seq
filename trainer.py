@@ -91,7 +91,7 @@ class Trainer(object):
         self.best_bleu = .0
         
         for epoch in range(self.num_epoch):
-            self.scheduler.step()
+            #self.scheduler.step()
             self.train_loss = AverageMeter()
             self.train_bleu = AverageMeter()
             start_time = time.time()
