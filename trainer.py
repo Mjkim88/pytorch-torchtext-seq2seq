@@ -79,7 +79,6 @@ class Trainer(object):
         
         if torch.cuda.is_available():
             self.model.cuda()
-            self.criterion.cuda()
 
         print (self.model)
         print (self.criterion)
